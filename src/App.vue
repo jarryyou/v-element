@@ -1,7 +1,7 @@
 <template>
-  <Button ref="buttonInstance" type="primary">点击</Button>
-  <Button ref="buttonInstance" type="success" round>点击</Button>
-  <Icon name="ArrowBackCircleOutline" color="lime" :size="24"></Icon>
+	<Button ref="buttonInstance" type="primary">点击</Button>
+	<Button ref="buttonInstance" type="success" round>点击</Button>
+	<Icon name="ArrowBackCircleOutline" color="lime" :size="24"></Icon>
 </template>
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
@@ -12,9 +12,9 @@ import type { ButtonInstance } from '@/packages/Button/component/button'
 
 let buttonInstance = ref<ButtonInstance | null>(null)
 onMounted(() => {
-  if (buttonInstance.value) {
-    console.log(buttonInstance)
-  }
+	if (buttonInstance.value) {
+		console.log(buttonInstance)
+	}
 })
 </script>
 <style scoped></style>
