@@ -1,5 +1,6 @@
 <template>
-  <!-- <Button ref="buttonInstance" type="danger">点击</Button> -->
+  <Button ref="buttonInstance" type="primary">点击</Button>
+  <Button ref="buttonInstance" type="success" round>点击</Button>
   <Icon name="ArrowBackCircleOutline" color="lime" :size="24"></Icon>
 </template>
 <script lang="ts" setup>

@@ -40,7 +40,8 @@ export const buttonEmits = {
   mousedown: (e: MouseEvent) => e instanceof MouseEvent
 }
 
-export type ButtonProps = ExtractPropTypes<typeof buttonProps>
+// 这行代码会报错 [@vue/compiler-sfc] Unresolvable type: TSTypeQuery
+// export type ButtonProps = ExtractPropTypes<typeof buttonProps>
 export type ButtonEmits = typeof buttonEmits
 
 export type ButtonInstance = InstanceType<typeof HTMLButtonElement>

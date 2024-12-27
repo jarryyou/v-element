@@ -30,3 +30,10 @@ $state-separator: 'is-';
   }
 }
 
+@mixin when($state) {
+  $T: $state-separator + $state;
+ .#{$T} {
+    @content;
+  }
+}
+

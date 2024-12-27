@@ -11,6 +11,7 @@ $colors: (
 );
 
 @include bem.bem-block($block) {
+  border-color: transparent;
 }
 
 @each $name, $value in $colors {
@@ -19,4 +20,8 @@ $colors: (
     color: $color-white;
     padding: 10px 20px;
   }
+}
+
+@include bem.when(round) {
+  border-radius: 1.5em;
 }

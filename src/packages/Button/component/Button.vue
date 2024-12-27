@@ -11,8 +11,8 @@
       bem.is('round', round),
     ]"
 		:disabled="disabled"
+    :type="nativeType"
 	>
-  <!-- :type="nativeType" -->
 		<span>
 			<slot></slot>
 		</span>
@@ -20,15 +20,18 @@
 </template>
 <script setup lang="ts">
 import { createNameSpace } from '@/utils/createBem';
-import type { ButtonProps } from './button';
+// import type { ButtonProps } from './button';
+import { buttonProps } from './button';
 
-withDefaults(defineProps<ButtonProps>(), {
-	nativeType: 'button'
-})
+// withDefaults(defineProps<ButtonProps>(), {
+// 	nativeType: 'button'
+// })
 
 defineOptions({
   name: 'Button'
 })
+
+const props = defineProps(buttonProps)
 
 const bem = createNameSpace('button')
 </script>

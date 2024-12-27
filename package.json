@@ -10,7 +10,10 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
     "@vicons/ionicons5": "^0.13.0",
@@ -35,6 +38,7 @@
     "unplugin-vue-define-options": "^1.5.3",
     "vite": "^6.0.6",
     "vite-plugin-vue-devtools": "^7.6.8",
+    "vitepress": "^1.5.0",
     "vue-tsc": "^2.1.10"
   }
 }
