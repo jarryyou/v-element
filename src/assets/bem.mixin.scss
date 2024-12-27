@@ -1,0 +1,32 @@
+// 定义BEM命名空间
+$namespace: 'v';
+
+// 定义分隔符
+$block-separator: '-';
+$element-separator: '__';
+$modifier-separator: '--';
+
+// 定义状态分隔
+$state-separator: 'is-';
+
+@mixin bem-block($block) {
+  $T: $namespace + $block-separator + $block;
+  .#{$T} {
+    @content;
+  }
+}
+
+@mixin bem-element($block, $element) {
+  $T: $namespace + $block-separator + $block + $element-separator + $element;
+  .#{$T} {
+    @content;
+  }
+}
+
+@mixin bem-modifier($block, $modifier) {
+  $T: $namespace + $block-separator + $block + $modifier-separator + $modifier;
+  .#{$T} {
+    @content;
+  }
+}
+
