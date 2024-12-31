@@ -2,7 +2,11 @@
 	<div :class="[
 		bem.b(),
 	]">
-		<TreeNode v-for="o in flattenTreeNodes" :key="o.key" :node="o"></TreeNode>
+		<VirtualList :list="flattenTreeNodes">
+			<template v-slot="{ node }">
+				<TreeNode :key="node.key" :node="node" @toggle-expand="toggleExpand"></TreeNode>
+			</template>
+		</VirtualList>
 	</div>
 </template>
 <script lang="ts" setup>
@@ -10,6 +14,7 @@ import { ref, computed } from 'vue'
 import { createNameSpace } from '@/utils/createBem.ts'
 import { type TreeNodeType, type TreeNodeWithLevel, treeProps } from './tree'
 import TreeNode from './TreeNode.vue'
+import VirtualList from '@/packages/VirtualList/component/VirtualList.vue'
 
 defineOptions({
 	name: 'Tree'
@@ -40,7 +45,6 @@ const flattenTreeNodes = computed(() => {
 		if (!node) continue // 除非栈为空，或者遇到空节点，什么情况会遇到空节点呢
 		flattenNodes.push(node)
 		if (expandedKeySet.value.has(node.key)) {
-			node.isExpanded = true
 			const children: TreeNodeType[] = node.children || []
 			for (let i = children.length - 1; i >= 0; i--) {
 				stack.push({
@@ -48,15 +52,32 @@ const flattenTreeNodes = computed(() => {
 					level: node.level + 1
 				})
 			}
-		} else {
-			node.isExpanded = false
 		}
 	}
 
+	flattenNodes = flattenNodes.map(o => {
+		return {
+			...o,
+			isExpanded: expandedKeySet.value.has(o.key)
+		}
+	})
+	// console.log(flattenNodes)
 	return flattenNodes
 })
 
-console.log(flattenTreeNodes.value)
+const collpaseNode = (node: TreeNodeType) => {
+	expandedKeySet.value.delete(node.key)
+}
+const expandNode = (node: TreeNodeType) => {
+	expandedKeySet.value.add(node.key)
+}
+const toggleExpand = (node: TreeNodeType) => {
+	if (expandedKeySet.value.has(node.key)) {
+		collpaseNode(node)
+	} else {
+		expandNode(node)
+	}
+}
 </script>
 <style scoped>
 

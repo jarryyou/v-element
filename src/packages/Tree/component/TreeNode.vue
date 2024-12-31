@@ -6,24 +6,32 @@
 		<div
 			:class="[bem.e('content')]"
 		>
-			<Icon :name="node.isExpanded ? 'CaretDown' : 'CaretForward'"></Icon>
+			<Icon class="expand-icon" :name="node.isExpanded ? 'CaretDown' : 'CaretForward'" @click="() => toggleExpand(node)"></Icon>
 			<span>{{ node.label }}</span>
 		</div>
 	</div>
 </template>
-<script lang="ts"  setup>
+<script lang="ts" setup>
 import { createNameSpace } from '@/utils/createBem.ts'
-import { treeNodeProps } from '@/packages/Tree/index.ts'
-import { defineProps } from 'vue'
+import { treeNodeProps, type TreeNodeType } from '@/packages/Tree/index.ts'
+import { defineProps, computed } from 'vue'
 
 defineOptions({
 	name: 'TreeNode'
 })
 
-const bem = createNameSpace('tree-node')
-const props = defineProps(treeNodeProps)
-// console.log(props.node)
-</script>
-<style scoped>
+const emits = defineEmits(['toggleExpand'])
 
+const bem = createNameSpace('treeNode')
+const props = defineProps(treeNodeProps)
+
+const toggleExpand = (node: TreeNodeType) => {
+	emits('toggleExpand', node)
+}
+</script>
+<style lang="scss" scoped>
+@use '@/assets/theme-chalk/treeNode.scss';
+.expand-icon {
+	cursor: pointer;
+}
 </style>

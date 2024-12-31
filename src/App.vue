@@ -2,7 +2,7 @@
 	<Button ref="buttonInstance" type="primary">点击</Button>
 	<Button ref="buttonInstance" type="success" round>点击</Button>
 	<Icon name="ArrowBackCircleOutline" color="lime" :size="24"></Icon>
-	<Tree :data="treeData" :default-expanded-keys="[2, 23]"></Tree>
+	<Tree :data="treeData" :default-expanded-keys="[2, 23, 3, 33]"></Tree>
 </template>
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
@@ -43,10 +43,40 @@ const treeData = ref([
 				key: 33,
 				label: '3-3',
 				children: [
-					{ key: 34, label: '3-3-1' },
-					{ key: 35, label: '3-3-2' },
-					{ key: 36, label: '3-3-3' },
-					{ key: 37, label: '3-3-4' },
+					{ key: 331, label: '3-3-1' },
+					{ key: 332, label: '3-3-2' },
+					{ key: 333, label: '3-3-3' },
+					{ key: 334, label: '3-3-4' },
+				]
+			}
+		]
+	},
+	{
+		key: 4,
+		label: '4',
+		children: [
+			{ key: 41, label: '4-1' },
+			{ key: 42, label: '4-2',
+			children: [
+				{ key: 421, label: '4-2-1' },
+				{ key: 422, label: '4-2-2' },
+				{ key: 423, label: '4-2-3' },
+				{ key: 424, label: '4-2-4' },
+				{ key: 425, label: '4-2-5' },
+				{ key: 426, label: '4-2-6' },
+				{ key: 427, label: '4-2-7' },
+				{ key: 428, label: '4-2-8' },
+			]},
+			{
+				key: 43,
+				label: '4-3',
+				children: [
+					{ key: 431, label: '4-3-1' },
+					{ key: 432, label: '4-3-2' },
+					{ key: 433, label: '4-3-3' },
+					{ key: 434, label: '4-3-4' },
+					{ key: 435, label: '4-3-5' },
+					{ key: 436, label: '4-3-6' },
 				]
 			}
 		]

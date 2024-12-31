@@ -1,0 +1,10 @@
+@use "../bem.mixin.scss" as *;
+
+@include bem-block(treeNode) {
+  height: 30px;
+  line-height: 30px;
+  @include bem-element(treeNode, content) {
+    display: flex;
+    align-items: center;
+  }
+}
