@@ -74,9 +74,10 @@ const visibleData = computed(() => {
 })
 
 const offset = ref(0)
-const handleScroll = e => {
+const handleScroll = (e: Event) => {
 	// console.log(e.target.scrollTop)
-	state.start = Math.floor(e.target.scrollTop / props.itemHeight)
+	const target = e.target as HTMLElement
+	state.start = Math.floor(target.scrollTop / props.itemHeight)
 	state.end = state.start + props.remain
 	offset.value = (state.start - prev.value) * props.itemHeight
 }
