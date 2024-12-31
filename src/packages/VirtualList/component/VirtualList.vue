@@ -7,7 +7,7 @@
 			position: 'relative',
 			border: '1px solid red'
 		}"
-		@scroll="$event => handleScroll($event)"
+		@scroll="e => handleScroll(e)"
 	>
 		<div
 			:class="[ bem.e('scroll-list') ]"
